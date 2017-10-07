@@ -1,17 +1,12 @@
- <!DOCTYPE html>
-<html lang="en">
-<!-- lang="en" กำหนดภาษาหลักเว็บ -->
-<head>
-	<meta charset="UTF-8">
-	<!-- meta = กำหนดรายละเอียดเล็กๆน้อยๆ
-	ใช้ utf-8 เพื่ออ่านฟ้อนไทย -->
-	<title>CMM19</title>
-	<!-- link rel href โหลดcssมาใช้กับเว็บเรา ด้านfontend (Bulmaเป็นเว็บช่วยดีไซโค้ดมันจะเป็นcss)-->
-	<link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
+{% extends 'layout/base.twig' %}
+
+{% block stylesheet %}
 	<link rel="stylesheet" href= "/assets/home.css">
-</head>
-<body>
-	<header>
+{% endblock %}
+
+{% block content %}
+
+	<!-- <header>
 		<div class ="has-text-centered">
 			<img Src="/assets/images/logo.png" alt="" width="145" height="auto">
 		</div>
@@ -27,25 +22,27 @@
 			<a hraf="#" class ="navbar-item">TP</a>
 		</nav>
 		
-		</header>
+	</header> -->
 <!-- <h1 class="has-text-centered"> สวัสดีจ้า </h1> -->
 		<main>
-			<section class ="banner" ><!-- มี12คอลัมตามทั่วๆไปของbulma-->
+			<section class ="banner"><!-- มี12คอลัมตามทั่วๆไปของbulma-->
 				<div class ="highlight">
 					<div class ="columns">
-						<div class ="column highlight-item">
-							<h1> Too EZ </h1>
-						</div>
+						<a class="column highlight-item" style="background-image: url({{highlight.url}});">
+						<!-- <div class ="column highlight-item"> -->
+							<h1>{{highlight.title}}</h1>
+						</a>
 					</div>
 				</div>
-				<div class ="thumbnail">
-					<div class ="columns is-marginless"> <!-- ลบขอบของmargin -->
-						<div class ="column thumbnail-item is-paddingless"
-						style="background-image: url(/assets/images/home/banner/thumbnail-1.jpg); ">
-							Ton
-						</div>
+					<div class ="thumbnail">
+						<div class ="columns is-marginless"> <!-- ลบขอบของmargin -->
+							{%for item in thumbnail%}
+							<div class ="column thumbnail-item is-paddingless has-text-centered" style="background-image: url({{item.url}});">
+								{{item.title}}
+							</div>
+							{%endfor%}
 
-						<div class ="column thumbnail-item is-paddingless"
+						<!-- <div class ="column thumbnail-item is-paddingless"
 						style="background-image: url(/assets/images/home/banner/thumbnail-2.jpg); ">
 							Palm
 						</div>
@@ -63,9 +60,9 @@
 						<div class ="column thumbnail-item is-paddingless"
 						style="background-image: url(/assets/images/home/banner/thumbnail-5.jpg); ">
 							Na
+						</div> -->
 						</div>
 					</div>
-
 			</section>
 
 			<section class="section we-present">
@@ -191,14 +188,11 @@
 							</div>
 						</a>
 
-
 					</div>
 				</div>
 			</section>
 		</main>
-</body>
-</html>
-
+{% endblock %}
 <!-- cmd -->
 <!-- cd = change directory เปลี่ยนปลายทาง command promt -->
 <!-- d: = เปลี่ยนเป็นไดร์ฟdก่อน -->
